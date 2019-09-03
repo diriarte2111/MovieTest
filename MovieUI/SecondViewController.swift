@@ -8,11 +8,12 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class SecondViewController: FirstViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+       
+        title = "Favorites"
     }
 
 

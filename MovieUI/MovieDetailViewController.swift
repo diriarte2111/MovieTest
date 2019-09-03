@@ -17,6 +17,11 @@ class MovieDetailViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var synopsisTextView: UITextView!
+    
+    @IBOutlet weak var rateLabel: UILabel!
+    
+    
     let baseURL = "https://image.tmdb.org/t/p/w500/"
     
     var imageURL : String!{
@@ -36,22 +41,11 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = UIColor.blue
+        //synopsisTextView.font = UIFont(name: "HelveticaRoundedLTStd-BdCn", size: 16)
         self.title = infoJSON["title"].string
         self.imageURL = infoJSON["poster_path"].string
-
-        // Do any additional setup after loading the view.
+        synopsisTextView.text = infoJSON["overview"].string
+        rateLabel.text = String(describing: infoJSON["vote_average"].number!.floatValue)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

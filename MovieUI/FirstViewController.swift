@@ -75,7 +75,6 @@ class FirstViewController: UIViewController, UISearchBarDelegate, UISearchResult
                     
                 } else {
                     print("Error: \(String(describing: response.result.error))")
-                    //self.bitcoinPriceLabel.text = "Connection Issues"
                 }
         }
     }
@@ -132,8 +131,6 @@ class FirstViewController: UIViewController, UISearchBarDelegate, UISearchResult
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
-        print("Frame: \(self.moviesCollectionView.frame)")
     }
     
     func updateSearchResults(for searchController: UISearchController) {

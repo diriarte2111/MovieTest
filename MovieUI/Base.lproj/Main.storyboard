@@ -61,20 +61,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVO-0z-9v9">
-                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jVO-0z-9v9">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Ng-gw-Knx">
-                                        <rect key="frame" x="82" y="20" width="250" height="300"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" scrollEnabled="NO" editable="NO" text="Demo text" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kx4-Tz-CLC">
+                                        <rect key="frame" x="10" y="368" width="396" height="37.5"/>
+                                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMR-zA-eXe">
+                                        <rect key="frame" x="355" y="20" width="35" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="300" id="Uzy-Lv-ehH"/>
-                                            <constraint firstAttribute="width" constant="250" id="YH5-z3-kJn"/>
+                                            <constraint firstAttribute="height" constant="20" id="DBy-21-ubL"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Ng-gw-Knx">
+                                        <rect key="frame" x="75" y="20" width="275" height="320"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="320" id="Uzy-Lv-ehH"/>
+                                            <constraint firstAttribute="width" constant="275" id="YH5-z3-kJn"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="1Ng-gw-Knx" firstAttribute="centerX" secondItem="jVO-0z-9v9" secondAttribute="centerX" id="ceu-Av-vKA"/>
+                                    <constraint firstAttribute="bottom" secondItem="Kx4-Tz-CLC" secondAttribute="bottom" constant="5" id="4vR-YF-7wg"/>
+                                    <constraint firstItem="Kx4-Tz-CLC" firstAttribute="top" secondItem="1Ng-gw-Knx" secondAttribute="bottom" constant="28" id="GSi-0g-RpM"/>
+                                    <constraint firstItem="Kx4-Tz-CLC" firstAttribute="centerX" secondItem="jVO-0z-9v9" secondAttribute="centerX" constant="1" id="VZp-6i-K19"/>
+                                    <constraint firstAttribute="trailing" secondItem="xMR-zA-eXe" secondAttribute="trailing" constant="10" id="beh-u9-gUi"/>
+                                    <constraint firstItem="1Ng-gw-Knx" firstAttribute="centerX" secondItem="jVO-0z-9v9" secondAttribute="centerX" constant="5.5" id="ceu-Av-vKA"/>
+                                    <constraint firstItem="xMR-zA-eXe" firstAttribute="top" secondItem="jVO-0z-9v9" secondAttribute="top" constant="20" id="fvo-lC-Npv"/>
+                                    <constraint firstItem="Kx4-Tz-CLC" firstAttribute="leading" secondItem="jVO-0z-9v9" secondAttribute="leading" constant="10" id="ocF-4Y-e4E"/>
                                     <constraint firstItem="1Ng-gw-Knx" firstAttribute="top" secondItem="jVO-0z-9v9" secondAttribute="top" constant="20" id="q2K-Ff-qTy"/>
+                                    <constraint firstItem="xMR-zA-eXe" firstAttribute="leading" secondItem="1Ng-gw-Knx" secondAttribute="trailing" constant="5" id="s7b-Xf-Gmp"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -89,11 +111,13 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="1Ng-gw-Knx" id="3e5-tK-wlh"/>
+                        <outlet property="rateLabel" destination="xMR-zA-eXe" id="8fp-MP-SS7"/>
+                        <outlet property="synopsisTextView" destination="Kx4-Tz-CLC" id="JnA-7u-bXN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Uq-6E-Gcb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2833" y="-320"/>
+            <point key="canvasLocation" x="3056.521739130435" y="-320.08928571428572"/>
         </scene>
         <!--Second View Controller-->
         <scene sceneID="wg7-f3-ORb">

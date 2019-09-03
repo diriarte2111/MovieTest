@@ -14,8 +14,17 @@ class SecondViewController: FirstViewController {
         super.viewDidLoad()
        
         title = "Favorites"
+        hideFavorite = true
     }
-
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getInfo()
+    }
+    
+    override func getInfo(){
+        movies = MovieManager.getAllFavoriteMovies()
+        moviesCollectionView.reloadData()
+    }
 }
 

@@ -15,6 +15,8 @@ class MovieDetailViewController: UIViewController {
     
     var infoJSON : JSON! = nil
     
+    var movie : Movie!
+    
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var synopsisTextView: UITextView!
@@ -26,7 +28,13 @@ class MovieDetailViewController: UIViewController {
     
     var imageURL : String!{
         willSet{
-            let imageCompleteURL = baseURL + newValue
+            guard let url = newValue else {
+                print("No tiene poster");
+                self.imageView.image = UIImage.init(named: "no_poster_available")
+                return
+            }
+            
+            let imageCompleteURL = baseURL + url
             print("ImageComplete \(imageCompleteURL)")
             Alamofire.request(imageCompleteURL).responseImage { response in
                 
@@ -42,10 +50,15 @@ class MovieDetailViewController: UIViewController {
         super.viewDidLoad()
 
         //synopsisTextView.font = UIFont(name: "HelveticaRoundedLTStd-BdCn", size: 16)
-        self.title = infoJSON["title"].string
-        self.imageURL = infoJSON["poster_path"].string
-        synopsisTextView.text = infoJSON["overview"].string
-        rateLabel.text = String(describing: infoJSON["vote_average"].number!.floatValue)
+//        self.title = infoJSON["title"].string
+//        self.imageURL = infoJSON["poster_path"].string
+//        synopsisTextView.text = infoJSON["overview"].string
+//        rateLabel.text = String(describing: infoJSON["vote_average"].number!.floatValue)
+        
+        title = movie.title
+        imageURL = movie.poster_path
+        synopsisTextView.text = movie.overview
+        rateLabel.text = String(movie.vote_average)
     }
 
 }

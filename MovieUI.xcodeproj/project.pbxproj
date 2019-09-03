@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BAAE27B231EF293007D854E /* MoviesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAAE27A231EF293007D854E /* MoviesRepository.swift */; };
+		1BAAE27F231EF317007D854E /* Movies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1BAAE27D231EF317007D854E /* Movies.xcdatamodeld */; };
+		1BAAE286231EF3AC007D854E /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAAE284231EF3AC007D854E /* Movie+CoreDataProperties.swift */; };
+		1BAAE287231EF3AC007D854E /* Movie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAAE285231EF3AC007D854E /* Movie+CoreDataClass.swift */; };
+		1BAAE289231EF446007D854E /* MovieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAAE288231EF446007D854E /* MovieManager.swift */; };
 		1BD132DC231DB10500420549 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD132DB231DB10500420549 /* AppDelegate.swift */; };
 		1BD132DE231DB10500420549 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD132DD231DB10500420549 /* FirstViewController.swift */; };
 		1BD132E0231DB10500420549 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD132DF231DB10500420549 /* SecondViewController.swift */; };
@@ -19,6 +24,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1BAAE27A231EF293007D854E /* MoviesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRepository.swift; sourceTree = "<group>"; };
+		1BAAE27E231EF317007D854E /* Movies.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Movies.xcdatamodel; sourceTree = "<group>"; };
+		1BAAE284231EF3AC007D854E /* Movie+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1BAAE285231EF3AC007D854E /* Movie+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1BAAE288231EF446007D854E /* MovieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieManager.swift; sourceTree = "<group>"; };
 		1BD132D8231DB10500420549 /* MovieUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BD132DB231DB10500420549 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BD132DD231DB10500420549 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -46,9 +56,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1BAAE279231EF264007D854E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1BAAE27A231EF293007D854E /* MoviesRepository.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1BAAE27C231EF303007D854E /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				1BAAE285231EF3AC007D854E /* Movie+CoreDataClass.swift */,
+				1BAAE284231EF3AC007D854E /* Movie+CoreDataProperties.swift */,
+				1BAAE27D231EF317007D854E /* Movies.xcdatamodeld */,
+				1BAAE288231EF446007D854E /* MovieManager.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		1BD132CF231DB10500420549 = {
 			isa = PBXGroup;
 			children = (
+				1BAAE27C231EF303007D854E /* Database */,
+				1BAAE279231EF264007D854E /* Services */,
 				1BD132DA231DB10500420549 /* MovieUI */,
 				1BD132D9231DB10500420549 /* Products */,
 				81220CB76A899B04621B6A58 /* Pods */,
@@ -223,8 +254,13 @@
 			files = (
 				1BD132F0231DB85400420549 /* MovieCollectionCell.swift in Sources */,
 				1BD132F2231DC61F00420549 /* MovieDetailViewController.swift in Sources */,
+				1BAAE289231EF446007D854E /* MovieManager.swift in Sources */,
 				1BD132E0231DB10500420549 /* SecondViewController.swift in Sources */,
 				1BD132DC231DB10500420549 /* AppDelegate.swift in Sources */,
+				1BAAE287231EF3AC007D854E /* Movie+CoreDataClass.swift in Sources */,
+				1BAAE286231EF3AC007D854E /* Movie+CoreDataProperties.swift in Sources */,
+				1BAAE27B231EF293007D854E /* MoviesRepository.swift in Sources */,
+				1BAAE27F231EF317007D854E /* Movies.xcdatamodeld in Sources */,
 				1BD132DE231DB10500420549 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,6 +463,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1BAAE27D231EF317007D854E /* Movies.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1BAAE27E231EF317007D854E /* Movies.xcdatamodel */,
+			);
+			currentVersion = 1BAAE27E231EF317007D854E /* Movies.xcdatamodel */;
+			path = Movies.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1BD132D0231DB10500420549 /* Project object */;
 }

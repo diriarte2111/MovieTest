@@ -66,7 +66,7 @@
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" scrollEnabled="NO" editable="NO" text="Demo text" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kx4-Tz-CLC">
                                         <rect key="frame" x="10" y="368" width="396" height="37.5"/>
-                                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -224,6 +224,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3WH-yG-wKv"/>
+        <segue reference="ArI-SR-h8H"/>
     </inferredMetricsTieBreakers>
 </document>

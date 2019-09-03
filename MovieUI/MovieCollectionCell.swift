@@ -20,6 +20,15 @@ class MovieCollectionCell: UICollectionViewCell {
     let baseURL = "https://image.tmdb.org/t/p/w500/"
     var favoriteButton : UIButton!
     
+    var movieObject : Movie!{
+        willSet{
+            self.titleLabel.text = newValue.title
+            self.ratingLabel.text = String(newValue.vote_average)
+            self.imageURL = newValue.poster_path
+            self.favoriteButton.isSelected = newValue.isFavorite
+        }
+    }
+    
     
     
 //    var activityIndicatorView :DGActivityIndicatorView!
@@ -34,8 +43,15 @@ class MovieCollectionCell: UICollectionViewCell {
     
     var imageURL : String!{
         willSet{
-            let imageCompleteURL = baseURL + newValue
-            print("ImageComplete \(imageCompleteURL)")
+            guard let url = newValue else {
+                print("No tiene poster");
+                
+                self.imageView.image = UIImage.init(named: "no_poster_available")
+                return
+            }
+            
+            let imageCompleteURL = baseURL + url
+            //print("ImageComplete \(imageCompleteURL)")
             Alamofire.request(imageCompleteURL).responseImage { response in
                 //debugPrint(response)
                 
@@ -77,8 +93,10 @@ class MovieCollectionCell: UICollectionViewCell {
         contentView.addSubview(titleLabel)
         
         favoriteButton = UIButton.init(type: .custom)
-        favoriteButton.backgroundColor = UIColor.red
-        //favoriteButton.addTarget(self, action: #selector(favoriteButtonTouched:), for:.tou)
+        favoriteButton.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        favoriteButton.layer.shadowColor = UIColor.black.cgColor
+        favoriteButton.setImage(UIImage.init(named: "favorite_unselected"), for: .normal)
+        favoriteButton.setImage(UIImage.init(named: "favorite_selected"), for: .selected)
         favoriteButton.addTarget(self, action: #selector(favoriteButtonTouched), for:.touchUpInside)
         contentView.addSubview(favoriteButton)
         
@@ -89,19 +107,13 @@ class MovieCollectionCell: UICollectionViewCell {
         ratingLabel.font = UIFont(name: "HelveticaRoundedLTStd-BdCn", size: 14)
         ratingLabel.textAlignment = .right
         contentView.addSubview(ratingLabel)
-        
-//        descriptionLabel = UILabel.init()
-//        descriptionLabel.textColor = UIColor.white
-//        descriptionLabel.numberOfLines = 0
-//        descriptionLabel.font = UIFont(name: "HelveticaRoundedLTStd-BdCn", size: 16)
-//        descriptionLabel.textAlignment = .left
-//        contentView.addSubview(descriptionLabel)
     }
     
     @objc func favoriteButtonTouched(_ button:UIButton){
         print("Touched favorite")
         button.isSelected = !button.isSelected
-        button.backgroundColor = button.isSelected ? UIColor.blue: UIColor.red
+        MovieManager.saveAsFavorite(button.isSelected, movieId: movieObject.movieId)
+        //button.backgroundColor = button.isSelected ? UIColor.blue: UIColor.red
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -115,33 +127,12 @@ class MovieCollectionCell: UICollectionViewCell {
     
     func resizeSubviews(){
         imageView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: 250)
-        favoriteButton.frame = CGRect (x:self.frame.width - 35,y:5, width: 30, height: 30)
+        favoriteButton.frame = CGRect (x:self.frame.width - 35, y:5, width: 30, height: 30)
         let originY : CGFloat = imageView.frame.maxY
         ratingLabel.frame = CGRect(x:self.frame.width - 35, y: originY, width: 30, height:self.frame.size.height - originY)
         titleLabel.frame = CGRect(x: 0, y: originY, width:ratingLabel.frame.origin.x, height: self.frame.size.height - originY)
-        
-        //let descriptionText = descriptionLabel.text! as NSString
-        
-        //let descriptionSize = descriptionText.boundingRect(with: CGSize(width: self.frame.width, height: CGFloat(MAXFLOAT)), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: descriptionLabel.font!], context: nil)
-       // descriptionLabel.frame = CGRect(x: 0, y: titleLabel.frame.maxY + 5, width: self.frame.width, height: descriptionSize.height)
-        //activityIndicatorView.frame = CGRect(x: (imageView.frame.width - 50)/2, y: (imageView.frame.height - 50)/2, width: 50, height: 50)
     }
-    
-//    func downloadImage(from url: URL) {
-//        getData(from: url) { data, response, error in
-//            guard let data = data, error == nil else { return }
-//            DispatchQueue.main.async() {
-//                self.activityIndicatorView.stopAnimating()
-//                self.activityIndicatorView.removeFromSuperview()
-//                self.imageView.image = UIImage(data: data)
-//            }
-//        }
-//    }
-//
-//    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-//        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-//    }
-    
+
 //    override func prepareForReuse() {
 //        super.prepareForReuse()
 //        imageView.image = nil
